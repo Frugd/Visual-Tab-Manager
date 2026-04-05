@@ -1,0 +1,78 @@
+name: Publish Firefox Add-on
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "firefox-v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Build Firefox package
+        id: package
+        shell: pwsh
+        run: ./scripts/package-firefox.ps1
+
+      - name: Upload unsigned Firefox package
+        uses: actions/upload-artifact@v4
+        with:
+          name: firefox-package
+          path: |
+            dist/visual-tab-manager-firefox.zip
+            dist/firefox/**
+
+      - name: Install web-ext
+        run: npm install --global web-ext
+
+      - name: Publish listed add-on to AMO
+        shell: bash
+        env:
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${AMO_JWT_ISSUER:-}" || -z "${AMO_JWT_SECRET:-}" ]]; then
+            echo "::error::Missing AMO_JWT_ISSUER or AMO_JWT_SECRET repository secret."
+            exit 1
+          fi
+
+          META_FILE="release/amo/metadata.json"
+
+          if [[ -f "$META_FILE" ]]; then
+            web-ext sign \
+              --channel listed \
+              --source-dir dist/firefox \
+              --artifacts-dir web-ext-artifacts \
+              --amo-metadata "$META_FILE" \
+              --api-key "$AMO_JWT_ISSUER" \
+              --api-secret "$AMO_JWT_SECRET"
+          else
+            web-ext sign \
+              --channel listed \
+              --source-dir dist/firefox \
+              --artifacts-dir web-ext-artifacts \
+              --api-key "$AMO_JWT_ISSUER" \
+              --api-secret "$AMO_JWT_SECRET"
+          fi
+
+      - name: Upload signed AMO artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: firefox-signed-artifacts
+          path: web-ext-artifacts/**
+          if-no-files-found: ignore

@@ -1,0 +1,13 @@
+{
+  "summary": {
+    "en-US": "Visual tab switching with captured page element previews."
+  },
+  "categories": {
+    "firefox": [
+      "productivity"
+    ]
+  },
+  "version": {
+    "license": "MPL-2.0"
+  }
+}

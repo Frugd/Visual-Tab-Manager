@@ -1,0 +1,6 @@
+dist/
+web-ext-artifacts/
+repogithub/
+.amo-upload-uuid
+.DS_Store
+Thumbs.db
