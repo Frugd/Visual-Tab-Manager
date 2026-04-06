@@ -1,6 +1,8 @@
 dist/
 web-ext-artifacts/
-repogithub/
 .amo-upload-uuid
+release/amo/metadata.json
+*.zip
+*.xpi
 .DS_Store
 Thumbs.db
