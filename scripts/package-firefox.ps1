@@ -36,16 +36,16 @@ New-Item -ItemType Directory -Force -Path $stagePath | Out-Null
 New-Item -ItemType Directory -Force -Path $archiveDir | Out-Null
 
 $copies = @(
-  @{ Source = "extension/manifests/firefox.json"; Destination = "manifest.json" },
-  @{ Source = "extension/src/background.js"; Destination = "background.js" },
-  @{ Source = "extension/src/content"; Destination = "content" },
-  @{ Source = "extension/src/manager"; Destination = "manager" },
-  @{ Source = "extension/src/popup"; Destination = "popup" },
-  @{ Source = "extension/src/shared"; Destination = "shared" },
-  @{ Source = "extension/assets/icons/icon-16.svg"; Destination = "icon-16.svg" },
-  @{ Source = "extension/assets/icons/icon-32.svg"; Destination = "icon-32.svg" },
-  @{ Source = "extension/assets/icons/icon-48.svg"; Destination = "icon-48.svg" },
-  @{ Source = "extension/assets/icons/icon-128.svg"; Destination = "icon-128.svg" }
+  @{ Source = "src/manifest-ff.json"; Destination = "manifest.json" },
+  @{ Source = "src/background/background.js"; Destination = "background/background.js" },
+  @{ Source = "src/common"; Destination = "common" },
+  @{ Source = "src/content"; Destination = "content" },
+  @{ Source = "src/manager"; Destination = "manager" },
+  @{ Source = "src/popup"; Destination = "popup" },
+  @{ Source = "src/icons/icon-16.svg"; Destination = "icons/icon-16.svg" },
+  @{ Source = "src/icons/icon-32.svg"; Destination = "icons/icon-32.svg" },
+  @{ Source = "src/icons/icon-48.svg"; Destination = "icons/icon-48.svg" },
+  @{ Source = "src/icons/icon-128.svg"; Destination = "icons/icon-128.svg" }
 )
 
 if (Test-Path -LiteralPath (Join-Path $repoRoot "LICENSE")) {

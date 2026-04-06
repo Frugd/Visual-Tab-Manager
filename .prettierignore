@@ -1,0 +1,5 @@
+dist/
+web-ext-artifacts/
+node_modules/
+other/promotion/**/*.png
+docs/images/*.png

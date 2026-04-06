@@ -21,25 +21,25 @@
   ],
   "background": {
     "scripts": [
-      "background.js"
+      "background/background.js"
     ],
     "type": "module"
   },
   "action": {
-    "default_popup": "popup/popup.html",
+    "default_popup": "popup/index.html",
     "default_icon": {
-      "16": "icon-16.svg",
-      "32": "icon-32.svg",
-      "48": "icon-48.svg",
-      "128": "icon-128.svg"
+      "16": "icons/icon-16.svg",
+      "32": "icons/icon-32.svg",
+      "48": "icons/icon-48.svg",
+      "128": "icons/icon-128.svg"
     },
     "default_title": "VTM"
   },
   "icons": {
-    "16": "icon-16.svg",
-    "32": "icon-32.svg",
-    "48": "icon-48.svg",
-    "128": "icon-128.svg"
+    "16": "icons/icon-16.svg",
+    "32": "icons/icon-32.svg",
+    "48": "icons/icon-48.svg",
+    "128": "icons/icon-128.svg"
   },
   "web_accessible_resources": [
     {

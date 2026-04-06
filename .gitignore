@@ -1,8 +1,16 @@
+# Build outputs
 dist/
 web-ext-artifacts/
 .amo-upload-uuid
+
+# Local release metadata overrides
 release/amo/metadata.json
+
+# Packaged artifacts
 *.zip
 *.xpi
+node_modules/
+
+# OS files
 .DS_Store
 Thumbs.db

@@ -526,7 +526,7 @@ async function activatePicker(tabId) {
     });
     await browser.scripting.executeScript({
       target: { tabId },
-      files: ["shared/ui.js", "content/content-picker.js"]
+      files: ["common/ui.js", "content/content-picker.js"]
     });
   } catch (err) {
     console.error("[VTM] Picker activation failed:", err);
@@ -539,7 +539,7 @@ async function activatePicker(tabId) {
    ═══════════════════════════════════════════════ */
 
 const WIN_STATE_KEY = "vtm_window_state";
-const MANAGER_PAGE_URL = browser.runtime.getURL("manager/manager.html");
+const MANAGER_PAGE_URL = browser.runtime.getURL("manager/index.html");
 const MANAGER_PAGE_PATTERN = `${MANAGER_PAGE_URL}*`;
 let managerWindowId = null;
 

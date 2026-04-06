@@ -1,0 +1,13 @@
+{
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/dist": true,
+    "**/web-ext-artifacts": true,
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/dist": true,
+    "**/web-ext-artifacts": true,
+    "**/node_modules": true
+  }
+}

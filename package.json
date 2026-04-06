@@ -1,0 +1,29 @@
+{
+  "name": "visual-tab-manager",
+  "version": "1.0.0",
+  "description": "Firefox-first WebExtension for visual tab switching with captured page-element previews.",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frugd/Visual-Tab-Manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Frugd/Visual-Tab-Manager/issues"
+  },
+  "homepage": "https://github.com/Frugd/Visual-Tab-Manager#readme",
+  "main": "src/manifest.json",
+  "keywords": [
+    "webextension",
+    "firefox",
+    "tab-manager",
+    "visual-tabs"
+  ],
+  "scripts": {
+    "package:firefox": "powershell -ExecutionPolicy Bypass -File scripts/package-firefox.ps1",
+    "format": "prettier --write \"*.{json,md}\" \".github/**/*.{md,yml,yaml}\" \"docs/**/*.md\" \"src/**/*.{js,css,html,json,md}\"",
+    "format:check": "prettier --check \"*.{json,md}\" \".github/**/*.{md,yml,yaml}\" \"docs/**/*.md\" \"src/**/*.{js,css,html,json,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}
